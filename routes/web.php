@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TodosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('api/todo', [TodosController::class, 'list']);
+Route::post('api/todo',[TodosController::class, 'saveTodo']);
+Route::put('api/todo/done/{id}', [TodosController::class, 'markAsDone']);
+Route::delete('api/todo/delete/{id}',[TodosController::class, 'deleteTodo']);
